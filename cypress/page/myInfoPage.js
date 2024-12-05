@@ -16,10 +16,10 @@ class myInfoPage {
         return selectors
     }
 
-    formName() {
-        cy.get(this.selectorList().firstName).clear().type('test')
-        cy.get(this.selectorList().middleName).clear().type('middleTest')
-        cy.get(this.selectorList().lastName).clear().type('lastTest')
+    formName(first, middle, last) {
+        cy.get(this.selectorList().firstName).clear().type(first)
+        cy.get(this.selectorList().middleName).clear().type(middle)
+        cy.get(this.selectorList().lastName).clear().type(last)
 
     }
 
