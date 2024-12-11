@@ -1,12 +1,17 @@
 import userData from '../fixtures/userData.json'
 import loginPage from '../page/loginPage.js'
 import dashboardPage from '../page/dashboardPage.js'
-import loginFailPage from '../page/loginFailPage.js'
+import menuPage from '../page/menuPage.js'
+import myInfoPage from '../page/myInfoPage.js'
 
+const Chance = require('chance'); //chance.js
 
+const chance = new Chance();
 const login = new loginPage()
 const dashboard = new dashboardPage()
-const loginFail = new loginFailPage()
+const menu = new menuPage()
+const myInfo = new myInfoPage()
+
 
 describe('orange', () => {
 
@@ -14,10 +19,11 @@ describe('orange', () => {
     login.accessLoginPage()
     login.loginWithUser(userData.success.username, userData.success.password)
     dashboard.verificationUrl()
-  })
-  
-  it('login - fail', () => {
-    loginFail.accessLoginPage()
-    loginFail.loginFail(userData.fail.username, userData.fail.password)
+    menu.myInfoButton()
+    myInfo.formName(chance.first(), chance.last(), chance.name())
+    myInfo.genericTest()
+    myInfo.buttonClose()
+    myInfo.radioButton()
+    myInfo.submitButton()
   })
 })
